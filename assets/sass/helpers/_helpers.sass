@@ -1,0 +1,133 @@
+@mixin text-hidden($width, $height, $url)
+  white-space: nowrap
+  overflow: hidden
+  text-indent: 101%
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+  width: $width
+  height: $height
+  background-image: url($url)
+
+@mixin linear($duration: 200ms)
+  transition: all linear $duration
+
+@mixin img-cover($width: 100%, $height: auto, $position: center center)
+  width: $width
+  height: $height
+  object-fit: cover
+  object-position: $position
+
+@mixin img-contain($width: 100%, $height: auto, $position: center center)
+  width: $width
+  height: $height
+  object-fit: contain
+  object-position: $position
+
+@mixin bg-cover($url, $width: 100%, $height, $position: center center)
+  background-image: url($url)
+  width: $width
+  height: $height
+  background-size: cover
+  background-position: $position
+  background-repeat: no-repeat
+
+@mixin bg-contain($url, $width: 100%, $height, $position: center center)
+  background-image: url($url)
+  width: $width
+  height: $height
+  background-size: contain
+  background-position: $position
+  background-repeat: no-repeat
+
+@mixin bg-fixed($url, $width: 100%, $height: 100vh, $position: center center)
+  background-image: url($url)
+  width: $width
+  height: $height
+  background-size: cover
+  background-position: $position
+  background-repeat: no-repeat
+  background-attachment: fixed
+
+/* 等比例背景圖 */
+@mixin bg-ratio($width: 100%, $bgW, $bgH)
+  background: no-repeat center / cover
+  width: $width
+  padding-top: calc($width / $bgW * $bgH)
+
+/* fz */
+@mixin fz($size)
+  font-size: #{$size / 16}rem
+
+/* ls */
+@mixin ls($ls)
+  letter-spacing: #{$ls}em
+
+/* ls-num */
+@mixin ls-num($ls)
+  letter-spacing: #{$ls}em
+
+/*  字體設定（全域/英文/中文) */
+// @font-face
+//   font-family: 'canela-bold'
+//   src: local('canela_bold')
+//   src: url('../fonts/canela_bold.otf') format('opentype')
+//   font-display: swap
+
+/* 英文 */
+@mixin en-fontF
+  font-family: 'Montserrat', "Microsoft JhengHei", "PingFang TC" ,"蘋果儷中黑",'sans-serif' , Arial
+  font-display: swap
+
+/* 中文 */
+@mixin zh-fontF
+  font-family: 'Noto Sans TC', "Microsoft JhengHei", "PingFang TC" ,"蘋果儷中黑",'sans-serif' , Arial
+  font-display: swap
+
+/* 文字設定超過幾行 -> ... */
+@mixin ellipsis($line: 1)
+  overflow : hidden
+  text-overflow: ellipsis 
+  display: -webkit-box
+  -webkit-line-clamp: $line
+  -webkit-box-orient: vertical
+  text-align: left
+
+/* 捲軸設定 */
+@mixin scrollbar
+  &::-webkit-scrollbar
+    width: 7px
+
+  &::-webkit-scrollbar-button
+    width: 7px
+    height: 5px
+
+  &::-webkit-scrollbar-track
+    background-color: rgba(#eee, 0)
+    border: 0
+    border-radius: 5px
+
+  &::-webkit-scrollbar-thumb
+    background-color: rgba(#d8d8d8, 0.3)
+    border: 0
+    border-radius: 5px
+
+  &::-webkit-scrollbar-thumb:hover
+    background-color: rgba(#d8d8d8, 0.5)
+
+/* 隱藏捲軸 */
+@mixin scrollbar-hidden
+  -ms-overflow-style: none
+  scrollbar-width: none
+  &::-webkit-scrollbar-track
+    background-color: transparent
+
+  &::-webkit-scrollbar-thumb
+    background-color: transparent
+
+  &::-webkit-scrollbar-thumb:hover
+    background-color: transparent
+
+  &::-webkit-scrollbar
+    background-color: transparent
+    display: none
